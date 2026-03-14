@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Vote Validator</h1>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="number" id="age" placeholder="Age">
+            <button onclick="vote()">Submit</button>
+        </div>
+        <p id="result">The result will be displayed here</p>
+    </div>
+
+    <script>
+        function vote() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            const resultElement = document.getElementById('result');
+
+            if (!name || isNaN(age)) {
+                resultElement.textContent = "Please enter both name and age.";
+                resultElement.style.color = "#ff4757";
+                return;
+            }
+
+            if (age >= 18) {
+                resultElement.textContent = `Hello ${name}, you are eligible to vote!`;
+                resultElement.style.color = "#2ed573";
+            } else {
+                resultElement.textContent = `Sorry ${name}, you are still a child. You are not eligible to vote.`;
+                resultElement.style.color = "#ffa502";
+            }
+        }
+    </script>
+</body>
+
+</html>
